@@ -4,9 +4,9 @@ from flask import Flask
 import mysql.connector
 
 mydb = mysql.connector.connect(
-  host= os.environ.get("MYSQL_HOST"),
-  user=os.environ.get("MYSQL_USER"),
-  passwd=os.environ.get("MYSQL_PASSWD")
+  host= os.environ.get("MYSQL_DB_HOST"),
+  user=os.environ.get("MYSQL_DB_USER"),
+  passwd=os.environ.get("MYSQL_ROOT_PASSWORD")
 )
 
 app = Flask(__name__)
