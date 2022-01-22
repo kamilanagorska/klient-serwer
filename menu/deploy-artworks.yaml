@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: artworks
+  labels:
+    app: artworks
+    version: v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: artworks
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: artworks
+        version: v1
+    spec:
+      serviceAccountName: default
+      containers:
+      - name: artworks
+        image: default-route-openshift-image-registry.apps.ocp.lab.cloudpak.site/labproj13/artworks:1.0
+        imagePullPolicy: Always
+        env:
+          - name: DB_TYPE
+            value: "mysql"
+          - name: MYSQL_DB_HOST
+            value: mysqldb
+          - name: MYSQL_DB_PORT
+            value: "3306"
+          - name: MYSQL_DB_USER
+            value: root
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-credentials
+                key: rootpasswd
+        ports:
+        - containerPort: 9080
+        securityContext:
+          runAsUser: 1000
