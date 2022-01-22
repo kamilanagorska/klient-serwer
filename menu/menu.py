@@ -7,7 +7,7 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 services_domain = "" if (os.environ.get("SERVICES_DOMAIN") is None) else "." + os.environ.get("SERVICES_DOMAIN")
-artworks_hostname = "127.0.0.1" if (os.environ.get("DETAILS_HOSTNAME") is None) else os.environ.get("DETAILS_HOSTNAME")
+artworks_hostname = "127.0.0.1" if (os.environ.get("ARTWORKS_HOSTNAME") is None) else os.environ.get("ARTWORKS_HOSTNAME")
 artworks_url = "http://{0}{1}:9080".format(artworks_hostname, services_domain)
 
 @app.route("/")  
