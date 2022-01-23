@@ -24,6 +24,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 9080
+        env:
+        - name: ARTWORKS_HOSTNAME
+          value: "artworks"
         volumeMounts:
         - name: tmp
           mountPath: /tmp
