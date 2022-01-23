@@ -1,0 +1,17 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  creationTimestamp: null
+  labels:
+    app: menu
+    service: menu
+  name: artworkssystem
+spec:
+  host: ""
+  port:
+    targetPort: http
+  to:
+    kind: ""
+    name: menu
+    weight: null
+status:
