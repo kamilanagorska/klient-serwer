@@ -24,5 +24,5 @@ def get_product(artwork_id):
 
 
 if __name__ == "__main__":
-   app.run(port=9080, host='0.0.0.0')
+   app.run(port=os.environ.get("MENU_PORT"), host='0.0.0.0')
 
