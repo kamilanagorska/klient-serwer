@@ -23,19 +23,14 @@ spec:
         image: default-route-openshift-image-registry.apps.ocp.lab.cloudpak.site/labproj13/artworks:1.0
         imagePullPolicy: Always
         env:
-          - name: DB_TYPE
-            value: "mysql"
-          - name: MYSQL_DB_HOST
-            value: mysql
-          - name: MYSQL_DB_PORT
-            value: "3306"
-          - name: MYSQL_DB_USER
-            value: root
           - name: MYSQL_ROOT_PASSWORD
             valueFrom:
               secretKeyRef:
                 name: mysql-credentials
                 key: rootpasswd
+        envFrom:
+          - configMapRef:
+              name: mycmap
         ports:
         - containerPort: 9080
         securityContext:
