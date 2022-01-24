@@ -24,9 +24,9 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 9080
-        env:
-        - name: ARTWORKS_HOSTNAME
-          value: "artworks"
+        envFrom:
+        - configMapRef:
+            name: mycmap
         volumeMounts:
         - name: tmp
           mountPath: /tmp
@@ -35,4 +35,3 @@ spec:
       volumes:
       - name: tmp
         emptyDir: {}
-
