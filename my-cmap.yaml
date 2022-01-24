@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mycmap
+data:
+  MENU_PORT: "9080"
+  ARTWORKS_PORT: "9080"
+  ARTWORKS_HOSTNAME: "artworks"
+  DB_TYPE: "mysql"
+  MYSQL_DB_HOST: "mysql"
+  MYSQL_DB_PORT: "3306"
+  MYSQL_DB_USER: "root"
